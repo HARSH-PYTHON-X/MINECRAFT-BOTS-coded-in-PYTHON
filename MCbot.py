@@ -1,3 +1,15 @@
+# TO USE 
+
+# press [ j ] to auto jump and place block
+# press [ x ] and [ w ] to auto walk with auto jump
+# press [ x ] and [ m ] to auto strip mine # MAKE SURE YOU ARE POINTING CURSOR AT BLOCK 
+# press [ x ] and [ j ] to auto build a tower 10 blocks high
+# press [ x ] and [ z ] to auto walk with placing blocks under feets
+
+# press [ q ] to break loop and end programme
+
+# FOR FUN - press [ x ] , [ s ] and [ u ] to sucide while facing under the feet
+
 from time import sleep
 import pyautogui as pg
 import pydirectinput as pd
