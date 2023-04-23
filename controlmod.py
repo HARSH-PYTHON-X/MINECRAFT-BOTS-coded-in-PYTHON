@@ -1,3 +1,7 @@
+# This is a module to create your own MINECRAFT bots
+
+# ----- IN DEVELOPMENT STAGE -----#
+
 from time import sleep
 import pyautogui as pg
 import pydirectinput as pd
