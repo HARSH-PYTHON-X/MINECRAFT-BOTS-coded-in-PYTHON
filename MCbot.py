@@ -6,6 +6,9 @@
 # press [ x ] and [ j ] to auto build a tower 10 blocks high
 # press [ x ] and [ z ] to auto walk with placing blocks under feets
 
+# threshold [ +, -, to reset [*] ]
+# second_threshold [ tp, tm, t0 ]
+
 # press [ q ] to break loop and end programme
 
 # FOR FUN - press [ x ] , [ s ] and [ u ] to sucide while facing under the feet
