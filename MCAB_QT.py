@@ -22,7 +22,7 @@ window.title('// DYNAMIX - CYBERDEX // MCAB - BOT // MENU')
 label_1 = Label(text = 'TASK FOR BOT >')
 label_1.pack()
 
-task_for_bot_input = Combobox(values = ['build wall', 'build pillar', 'autoclicker key', 'strip mine'])
+task_for_bot_input = Combobox(values = ['KEYBOARD SHORTCUTS','build wall', 'build pillar', 'autoclicker key', 'strip mine'])
 task_for_bot_input.pack()
 
 # MORE DEFINITONS
@@ -241,6 +241,9 @@ def strip_mine_initiative () :
 def run () :
     task_for_bot = task_for_bot_input.get()
 
+    threshold = 1
+    second_threshold = 1
+
     if task_for_bot == 'build wall' :
         build_wall_initiative()
 
@@ -253,6 +256,132 @@ def run () :
     elif task_for_bot == 'strip mine' :
         strip_mine_initiative()
 
+#################################################
+
+    elif task_for_bot == 'KEYBOARD SHORTCUTS' :
+        while True :
+            if keyboard.is_pressed('+') :
+                sleep(0.1)
+                threshold = threshold + 1
+                print('threshold [x, z] axis >', threshold)
+
+            elif keyboard.is_pressed('t') and keyboard.is_pressed('p') :
+                sleep(0.1)
+                second_threshold = second_threshold + 1
+                print('second threshold [y] axis >', second_threshold)
+        
+            elif keyboard.is_pressed('-') :
+                sleep(0.1)
+                threshold = threshold - 1
+                print('threshold [x, z] axis >', threshold)
+
+            elif keyboard.is_pressed('t') and keyboard.is_pressed('m') :
+                sleep(0.1)
+                second_threshold = second_threshold - 1
+                print('second threshold [y] axis >', second_threshold)
+
+            elif keyboard.is_pressed('*') :
+                sleep(0.1)
+                threshold = 1
+                print('threshold [x, z] axis >', threshold)
+
+            elif keyboard.is_pressed('t') and keyboard.is_pressed('0') :
+                sleep(0.1)
+                second_threshold = 1
+                print('second threshold [y] axis >', second_threshold)
+        
+            elif keyboard.is_pressed('p') and keyboard.is_pressed('t') :
+                sleep(0.1)
+                print('threshold >', threshold)
+                print('second threshold [y] axis >', second_threshold)
+
+###############################################3
+
+            elif keyboard.is_pressed('j') :
+                print('auto block jumped ...')
+                cd.jump_block()
+
+            elif keyboard.is_pressed('x') and keyboard.is_pressed('w') :
+                sleep(1)
+                print('auto walk started ...')
+                pd.keyDown('w')
+                for x in range(30) :
+                    cd.jump()
+                pd.keyUp('w')
+                print('auto walk completed ...')
+
+            elif keyboard.is_pressed('x') and keyboard.is_pressed('m') :
+                sleep(1)
+                print('auto mined [10 blocks] started ...')
+                for x in range (10) :
+                    cd.walk_w(0.3)
+                    cd.destroy(0.1)
+                    cd.destroy(0.1)
+                print('auto mined [10 blocks] completed ...')
+
+            elif keyboard.is_pressed('x') and keyboard.is_pressed('j') :
+                sleep(1)
+                print('auto jump block [10 blocks] started ...')
+                for x in range (10) :
+                    cd.jump_block()
+                print('auto jump block [10 blocks] completed ...')
+
+            elif keyboard.is_pressed('x') and keyboard.is_pressed('s') and keyboard.is_pressed('u') :
+                sleep(1)
+                print(f'suciding from [{second_threshold}] blocks ...')
+                for x in range (second_threshold) :
+                    cd.jump_block()
+                    cd.walk_w(0.5)
+                print('!! sucide successful ...')
+
+            elif keyboard.is_pressed('x') and keyboard.is_pressed('z') :
+                sleep(1)
+                print('auto jump block walk started ...')
+                pd.keyDown('w')
+                for x in range (15) :
+                    cd.jump_block()
+                pd.keyUp('w')
+                print('auto jump block completed ...')
+
+            elif keyboard.is_pressed('x') and keyboard.is_pressed('p') :
+                sleep(1)
+                print('auto front block placer started ...')
+                for x in range (15) :
+                    cd.place()
+                    cd.place()
+                    cd.place()
+                    cd.walk_w(0.05)
+                print('auto front block placer completed ...')
+
+            # BUILDERS USING THRESHOLD
+
+            elif keyboard.is_pressed('b') and keyboard.is_pressed('w') :
+                sleep(1)
+                print(f'auto wall builder started for [length >{threshold} and height >{second_threshold}]...')
+                for x in range (threshold) :
+                    for y in range(second_threshold) :
+                        cd.jump() 
+                        sleep(0.1)
+                        cd.place()
+                    cd.walk_w(0.5)
+                    sleep(0.5)
+                    cd.walk_s(1)
+                    print(f'{x} pillar completed ...')
+                print('auto wall builder completed ...')   
+ 
+            elif keyboard.is_pressed('e') : # AUTCLICKER 
+                pd.leftClick() 
+
+    # -------------------------------
+
+            elif keyboard.is_pressed('q') :
+                print()
+                print('automation terminated ...')
+                print() 
+                break 
+
+
+##############################################################################
     else :
         print('please choose a valid option')
 
